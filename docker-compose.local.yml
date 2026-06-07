@@ -1,0 +1,8 @@
+services:
+  api:
+    ports:
+      - "${LOCAL_API_PORT:-8787}:${API_PORT:-8787}"
+
+  web:
+    ports:
+      - "${LOCAL_WEB_PORT:-5180}:4173"

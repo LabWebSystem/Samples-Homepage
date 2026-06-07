@@ -22,7 +22,8 @@ type Task = {
   completedAt: string | null;
 };
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "http://localhost:8787";
+const rawApiBaseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
+const API_BASE_URL = rawApiBaseUrl === "/" ? "" : rawApiBaseUrl.replace(/\/$/, "");
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE_URL}${path}`, {

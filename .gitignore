@@ -1,9 +1,15 @@
+node_modules
 frontend/node_modules
 frontend/dist
 frontend/*.tsbuildinfo
-frontend/.yarn
+frontend/.yarn/*
+!frontend/.yarn/releases/
+!frontend/.yarn/releases/yarn-4.14.1.cjs
 api/node_modules
 api/dist
 api/*.tsbuildinfo
-api/.yarn
+api/.yarn/*
+!api/.yarn/releases/
+!api/.yarn/releases/yarn-4.14.1.cjs
+.appdata
 .labcore

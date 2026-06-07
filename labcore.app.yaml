@@ -1,9 +1,9 @@
 schemaVersion: 1
 app:
   name: homepage-sample
-  description: Timer TODO sample with web/api/db containers
+  description: Timer TODO homepage compatible with LabWebSystem deployment
 repository:
-  url: https://github.com/example/homepage-sample.git
+  url: https://github.com/LabWebSystem/Samples-Homepage.git
   defaultBranch: main
 deployment:
   composePath: docker-compose.yml
@@ -12,11 +12,15 @@ deployment:
 exposure:
   service: web
   port: 4173
-  hostname: homepage.fukaya-sus.lab
+  hostname: homepage.lab.localhost
 devices:
   required: []
 env:
   required: []
-  defaults: {}
+  defaults:
+    APPDATA_ROOT: ../../appdata/homepage-sample
+    CORS_ORIGIN: "*"
+    VITE_API_BASE_URL: /
+    VITE_PROXY_TARGET: http://api:8787
 profiles:
   default: dev-sim
