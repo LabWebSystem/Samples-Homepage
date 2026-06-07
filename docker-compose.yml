@@ -12,7 +12,7 @@ services:
       timeout: 5s
       retries: 20
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ${APPDATA_ROOT:-./.appdata/homepage-sample}:/var/lib/postgresql/data
     networks:
       - backend
 
@@ -24,12 +24,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    restart: unless-stopped
     environment:
       PORT: "8787"
-      DATABASE_URL: postgresql://homepage:homepage@db:5432/homepage
-      CORS_ORIGIN: http://localhost:5180
-    ports:
-      - "8787:8787"
+      DATABASE_URL: postgresql://${POSTGRES_USER:-homepage}:${POSTGRES_PASSWORD:-homepage}@db:5432/${POSTGRES_DB:-homepage}
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+    expose:
+      - "8787"
     networks:
       - backend
       - frontend
@@ -44,13 +45,12 @@ services:
     restart: unless-stopped
     depends_on:
       - api
-    ports:
-      - "5180:4173"
+    environment:
+      VITE_PROXY_TARGET: ${VITE_PROXY_TARGET:-http://api:8787}
+    expose:
+      - "4173"
     networks:
       - frontend
-
-volumes:
-  db-data:
 
 networks:
   frontend:

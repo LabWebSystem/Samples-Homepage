@@ -1,0 +1,13 @@
+{
+  "name": "samples-homepage",
+  "private": true,
+  "packageManager": "yarn@4.14.1",
+  "scripts": {
+    "labcore": "bash ./scripts/labcore-sdk.sh",
+    "labcore:inspect": "bash ./scripts/labcore-sdk.sh inspect --profile dev-sim",
+    "labcore:lint": "bash ./scripts/labcore-sdk.sh lint --profile dev-sim",
+    "labcore:preflight": "bash ./scripts/labcore-sdk.sh preflight --profile dev-sim",
+    "labcore:guard": "bash ./scripts/labcore-sdk.sh guard prod --profile prod",
+    "labcore:export": "bash ./scripts/labcore-sdk.sh export --profile prod --out build/labcore-payload.json"
+  }
+}

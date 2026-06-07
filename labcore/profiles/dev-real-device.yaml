@@ -1,8 +1,11 @@
 profile: dev-real-device
 overrides:
-  env: {}
+  env:
+    APPDATA_ROOT: ./.appdata/homepage-sample
+    LABCORE_DEVICE_MODE: real
   composeFiles:
     - docker-compose.yml
+    - docker-compose.dev.yml
   deviceRequirements: []
   guard:
     allowMock: false

@@ -1,6 +1,7 @@
 profile: prod
 overrides:
-  env: {}
+  env:
+    LABCORE_DEVICE_MODE: real
   composeFiles:
     - docker-compose.yml
   deviceRequirements: []

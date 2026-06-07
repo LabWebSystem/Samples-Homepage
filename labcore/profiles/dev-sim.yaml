@@ -1,8 +1,11 @@
 profile: dev-sim
 overrides:
-  env: {}
+  env:
+    APPDATA_ROOT: ./.appdata/homepage-sample
+    LABCORE_DEVICE_MODE: mock
   composeFiles:
     - docker-compose.yml
+    - docker-compose.dev.yml
   deviceRequirements: []
   guard:
     allowMock: true
