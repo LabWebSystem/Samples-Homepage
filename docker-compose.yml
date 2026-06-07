@@ -13,11 +13,14 @@ services:
       retries: 20
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
 
   api:
     build:
       context: ./api
       dockerfile: Dockerfile
+      network: host
     depends_on:
       db:
         condition: service_healthy
@@ -27,6 +30,9 @@ services:
       CORS_ORIGIN: http://localhost:5180
     ports:
       - "8787:8787"
+    networks:
+      - backend
+      - frontend
 
   web:
     build:
@@ -40,6 +46,8 @@ services:
       - api
     ports:
       - "5180:4173"
+    networks:
+      - frontend
 
 volumes:
   db-data:
