@@ -3,6 +3,8 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
+      # 新しいパスを環境変数として指定（必須）
+      PGDATA: /var/lib/postgresql/data/pgdata    
       POSTGRES_DB: ${POSTGRES_DB:-homepage}
       POSTGRES_USER: ${POSTGRES_USER:-homepage}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-homepage}
@@ -12,7 +14,8 @@ services:
       timeout: 5s
       retries: 20
     volumes:
-      - ${APPDATA_ROOT:-./.appdata/homepage-sample}:/var/lib/postgresql/data
+      # マウント先を data から data/pgdata へ変更
+      - ${APPDATA_ROOT:-./.appdata/homepage-sample}:/var/lib/postgresql/data/pgdata
     networks:
       - backend
 
