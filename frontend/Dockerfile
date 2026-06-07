@@ -21,4 +21,4 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/vite.config.ts ./vite.config.ts
 
 EXPOSE 4173
-CMD ["node", ".yarn/releases/yarn-4.14.1.cjs", "preview", "--host", "0.0.0.0"]
+CMD ["corepack", "yarn", "preview", "--host", "0.0.0.0"]
