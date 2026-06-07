@@ -6,10 +6,12 @@ export default defineConfig({
   plugins: [react()],
   // プレビューサーバーの設定
   preview: {
-    allowedHosts: ["homepage.samples.fukaya-sus.lab"],
+    // 全てのホストを許可（原因切り分けのため）
+    allowedHosts: true,
   },
-  // 開発（dev）サーバーでも同様のエラーが出る場合は、以下のコメントアウトを解除して設定してください
-  // server: {
-  //   allowedHosts: ["homepage.samples.fukaya-sus.lab"],
-  // },
+  // 開発（dev）サーバーの設定
+  server: {
+    // 全てのホストを許可（原因切り分けのため）
+    allowedHosts: true,
+  },
 });
