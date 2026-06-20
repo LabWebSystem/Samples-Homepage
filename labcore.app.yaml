@@ -12,13 +12,13 @@ deployment:
 exposure:
   service: web
   port: 4173
-  hostname: homepage.lab.localhost
+  hostname: homepage
 devices:
   required: []
 env:
   required: []
   defaults:
-    APPDATA_ROOT: ../../appdata/homepage-sample
+    APPDATA_ROOT: ./data
     CORS_ORIGIN: "*"
     VITE_API_BASE_URL: /
     VITE_PROXY_TARGET: http://api:8787

@@ -14,7 +14,7 @@ services:
       timeout: 5s
       retries: 20
     volumes:
-      - ${APPDATA_ROOT:-./.appdata/homepage-sample}:/var/lib/postgresql/data
+      - ${APPDATA_ROOT:-data/}:/var/lib/postgresql/data
     networks:
       - backend
 
